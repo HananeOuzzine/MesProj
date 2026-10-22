@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+    const personnes = [
+    { nom: "Rami", age: 33, estMember: true }, 
+    { nom: "Fatihi", age: 24, estMember: false },
+    { nom: "Chakib", age: 45, estMember: true },
+    { nom: "Mounir", age: 37, estMember: false },
+];  
+    </pre>
+    <hr>
+    <div>
+        <button id="bt1">map( liste noms)</button><br>
+        <button id="bt2">find(premier pers age >40)</button><br>
+        <button id="bt3">filter(personne age >40 )</button><br>
+        <button id="bt4"> reduce(somme des ages)</button><br>
+    </div>
+    <div id="dv1">
+
+    </div>
+    <script>
+        let divRes=document.getElementById("dv1");
+        let bt1=document.getElementById("bt1");
+        let bt2=document.getElementById("bt2");
+        let bt3=document.getElementById("bt3");
+        let bt4=document.getElementById("bt4");
+        const tab1=[
+    { nom: "Rami", age: 33, estMember: true }, 
+    { nom: "Fatihi", age: 24, estMember: false },
+    { nom: "Chakib", age: 45, estMember: true },
+    { nom: "Mounir", age: 37, estMember: false },
+      ];  
+
+        bt1.addEventListener("click",function(){
+            const tabNoms=tab1.map(function(pers,index){
+                return pers .nom+"(age:"+pers.age+")";
+            });
+            divRes.innerHTML=JSON.stringify(tabNoms);
+
+
+        });
+        bt2.addEventListener("click",function(){
+            const tabNoms=tab2.map(function(pers,index){
+                return pers .nom+"(age:"+pers.age+")";
+            });
+            divRes.innerHTML=JSON.stringify(tabNoms);
+
+        });
+        bt3.addEventListener("click",function(){
+            const tabNoms=tab3.map(function(pers,index){
+                return pers .nom+"(age:"+pers.age+")";
+            });
+            divRes.innerHTML=JSON.stringify(tabNoms);
+
+        });
+        bt4.addEventListener("click",function(){
+            const tabNoms=tab4.map(function(pers,index){
+                return pers .nom+"(age:"+pers.age+")";
+            });
+            divRes.innerHTML=JSON.stringify(tabNoms);
+
+        });
+
+
+    </script>
+</body>
+</html>

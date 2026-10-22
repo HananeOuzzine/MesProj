@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre>
+        personnes = [
+    { nom: "Rami", age: 33, estMember: true },
+    { nom: "Fatihi", age: 24, estMember: false },
+    { nom: "Chakib", age: 45, estMember: true },
+    { nom: "Mounir", age: 37, estMember: false },
+];
+    </pre>
+    <hr>
+    <div>
+        <button id="bt1"> Map (liste des noms ) </button> <br>
+        <button id="bt2"> Filter (personne age > 40)</button> <br>
+        <button id="bt3"> Find (premiere pers age >40)</button> <br>
+        <button id="bt4"> Reduce (somme des ages) </button> <br>
+    </div>
+    <div id="dv1">
+
+    </div>
+    <script>
+        let divRes = document.getElementById("dv1");
+        let bt1 = document.getElementById("bt1");
+        let bt2 = document.getElementById("bt2");
+        let bt3 = document.getElementById("bt3");
+        let bt4 = document.getElementById("bt4");
+
+        const tab1 = [
+            { nom: "Rami", age: 33, estMember: true },
+            { nom: "Fatihi", age: 24, estMember: false },
+            { nom: "Chakib", age: 45, estMember: true },
+            { nom: "Mounir", age: 37, estMember: false },
+        ];
+
+        bt1.addEventListener("click", function () {
+            divRes.innerHTML = "";
+            const tabNoms = tab1.map(function (pers, index) {
+                return pers.nom + "(age: " + pers.age + ")";
+            });
+            divRes.innerHTML = JSON.stringify(tabNoms);
+        });
+        //*********************
+        bt2.addEventListener("click", function () {
+            divRes.innerHTML = "";
+            const tabPersSup40 = tab1.filter(function (pers, index) {
+                return pers.age > 40;
+            });
+            divRes.innerHTML = JSON.stringify(tabPersSup40);
+
+        });
+        //*********************
+        bt3.addEventListener("click", function () {
+            divRes.innerHTML = ""; 
+            const premPersSup40 = tab1.find(function (pers, index) {
+                return pers.age > 40; 
+            });
+            divRes.innerHTML = "Premiere personne de plus de 40: " + JSON.stringify(premPersSup40);
+
+        });
+        //*********************
+        bt4.addEventListener("click", function () { 
+            divRes.innerHTML = ""; 
+            const total = tab1.reduce(function(cumul, valAct){
+                return cumul + valAct.age;
+            },0)
+            divRes.innerHTML = "total des Ages: " + total; // t9ad
+        });
+        //*******************
+        const tab2 = tab1.slice(2,4);
+        divRes.innerHTML = JSON.stringify(tab2);
+        //*******splice:suprime et remplace des elements****
+        //**exemple : supprimer le 2em element
+        const res = tab1.splice(1,1);
+        console.log(res);
+        //****exemple : remplacer le 2em elem******
+        const res1 = tab1.splice(1,1,"HHHH");
+        console.log(res1, tab1);
+        //******le method sort****
+        //tri par age croissant
+        tab1.sort((val1,val2) => val1.age - val2.age);
+        divRes.innerHTML += "<hr>"+JSON.stringify(tab1);
+        //tri par age decroissant
+        tab1.sort((val1, val2) => val2.age - val1.age);
+        divRes.innerHTML += "<hr>"+JSON.stringify(tab1);
+        //desction d'un tableau
+        const t = [12,26,-40,33];
+        const [a,b,c,d] = [...t];
+        const [a1,b1,...c1]= [...t];
+        console.log("c1:",c1);
+        const t2 = [...t];//cople des valeurs de t vers t2
+        const t3 = t;//cople des references de t vers t2
+        t[1] = 999;
+        console.log("t2:", t2,"\nt3:",t3);
+        divRes.innerHTML+= "<hr>" +c;
+        //permutatio de deux variables;
+        let x=25, y=50;
+        divRes.innerHTML += "<hr>valeurs de x et y avant permutation :";
+        divRes.innerHTML += " x= " + x + ", y= " + y;
+        [x,y]=[y,x];
+        divRes.innerHTML += "<hr>Valeurs de x et y apres permutation :";
+        divRes.innerHTML += " x=" + x + ", y= " + y;
+
+    </script>
+</body>
+
+</html>

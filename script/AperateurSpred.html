@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>t= [12, 25, 80, 63] </div>
+    <hr>
+    <div id="dv1"></div>
+    <script>
+        let divRes = document.getElementById("dv1");
+        let t= [12, 25, 80, 63]
+        let t2 = t;
+        divRes.innerHTML = `t: ${JSON.stringify (t)} <br> t2:${JSON.stringify(t2)}`;
+        t2[0] = 9999;
+        divRes.innerHTML = `<hr>Apres modification de t2 : <br>t ; ${JSON.stringify(t)}<br>t2:${JSON.stringify-(t2)}`;
+        //utilisation de l'operateur spread
+        let t3 = [...t];
+        divRes.innerHTML = `<hr>t: ${JSON.stringify(t)}<br>t3:${JSON.stringify(t3)}`;
+        t3[0]= 888;
+        divRes.innerHTML += `<hr>Apres modification de t : <br>t: ${JSON.stringify(t)}<br> t3:${JSON.stringify(t3)}`;
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span id="sp1">00</span>:
+        <span id="sp2">00</span>:
+        <span id="sp3">00</span>
+    </div>
+        <button id="bt1"> marche</button>
+        <button id="bt2"> arret</button>
+    <script>
+        let spanH=document.getElementById("sp1");
+        let spanM=document.getElementById("sp2");
+        let spanS=document.getElementById("sp3");
+        let tempInitial={heure:23,minute:59,seconde:50};
+        let currentTime = {...tempInitial };
+
+        let btnmarche=document.getElementById("bt1");
+        let btnArret=document.getElementById("bt2");
+
+        btnmarche.addEventListener("click",incrementerTimer);
+        btnArret.addEventListener("click",stopTimer);
+
+        function afficher(t){
+            spanH.innerHTML=t.heure;
+            spanM.innerHTML=t.minute;
+            spanS.innerHTML=t.seconde;
+        }
+        function incrementer(tmp){
+            let temps ={...tmp};
+
+            return function(){
+            temps.seconde++;
+            if(temps.seconde>=60){
+                temps.seconde=0;
+                temps.minute++;
+
+                if(temps.minute>=60);
+                temps.minute = 0
+                temps.heure++;
+
+                if(temps.heure>=24){
+                    temps.heure=0;
+                }
+            }
+       
+        afficher(currentTime);
+        currentTime=temps;
+        return temps;
+ }
+    };
+
+        let idTimer =null;
+        function stopTimer(){
+            clearInterval(idTimer);
+        }
+        function incrementerTimer(){
+            let calcNextTime=incrementer(currentTime);
+            idTimer=setInterval(calcNextTime,1000)
+        }
+        
+    </script>
+    
+</body>
+</html>

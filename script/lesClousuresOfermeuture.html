@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <BUTton onclick="increnter()" > incrementer </BUTton>
+    <div id="dv1">0</div>
+    <script>
+        let divRes = document.getElementById("dv");
+        function compteur(){
+            let cpt = 0;
+            cpt ++;
+            return cpt;
+        }
+        function incrementer(){
+            valeur = compteur();
+            let nb = valeur();
+            divRes.innerHTML += `compteur: $(valeur())<br>`;
+            divRes.innerHTML += `compteur: $(valeur())<br>`;
+            divRes.innerHTML += `compteur: $(valeur())<br>`;
+
+
+
+            
+        }
+    </script>
+    
+</body>
+</html>
